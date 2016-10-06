@@ -1,0 +1,6 @@
+name: ProductRequest
+code: ProductRequest
+version: 0.0.1
+event: ProductRequestEvent
+service:
+    - ProductRequestServiceProvider

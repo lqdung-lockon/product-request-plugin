@@ -1,0 +1,28 @@
+Plugin\ProductRequest\Entity\ProductRequestMail:
+    type: entity
+    table: plg_product_request_mail
+    repositoryClass: Plugin\ProductRequest\Repository\ProductRequestMailRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: text
+            nullable: true
+        rank:
+            type: integer
+            nullable: true
+    oneToOne:
+        MailTemplate:
+            targetEntity: Eccube\Entity\MailTemplate
+            joinColumn:
+                name: template_id
+                referencedColumnName: id
+                onDelete: CASCADE
+            nullable: false
+    lifecycleCallbacks: {  }

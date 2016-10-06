@@ -1,0 +1,74 @@
+Plugin\ProductRequest\Entity\ProductRequest:
+    type: entity
+    table: plg_product_request
+    repositoryClass: Plugin\ProductRequest\Repository\ProductRequestRepository
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: req_id
+            generator:
+                strategy: AUTO
+    fields:
+        name01:
+            type: text
+            nullable: true
+            column: req_name01
+        name02:
+            type: text
+            nullable: true
+            column: req_name02
+        email:
+            type: text
+            nullable: true
+            column: req_email
+        quantity:
+            type: integer
+            nullable: true
+            options:
+                default: '0'
+        requestDate:
+            type: datetime
+            nullable: false
+            column: req_date
+        createDate:
+            type: datetime
+            nullable: false
+            column: create_date
+        updateDate:
+            type: datetime
+            nullable: false
+            column: update_date
+        commitDate:
+            type: datetime
+            nullable: true
+            column: commit_date
+        delFlg:
+            type: smallint
+            nullable: false
+            unsigned: false
+            column: del_flg
+            options:
+                default: '0'
+    manyToOne:
+        Customer:
+            targetEntity: Eccube\Entity\Customer
+            inversedBy: ProductRequests
+            joinColumn:
+                name: customer_id
+                referencedColumnName: customer_id
+            nullable: true
+        Product:
+            targetEntity: Eccube\Entity\Product
+            nullable: true
+            joinColumn:
+                name: product_id
+                referencedColumnName: product_id
+        ProductClass:
+            targetEntity: Eccube\Entity\ProductClass
+            nullable: true
+            joinColumn:
+                name: product_class_id
+                referencedColumnName: product_class_id
+    lifecycleCallbacks: {  }
